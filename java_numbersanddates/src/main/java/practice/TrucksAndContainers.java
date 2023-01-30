@@ -12,11 +12,25 @@ public class TrucksAndContainers {
         int boxes = scanner.nextInt();
 
         int boxesInContainer = 27;
-        int containerInTrack = 10;
+        int containerInTrack = 12;
 
         int сontainerCount = boxes/boxesInContainer + (boxes % boxesInContainer == 0 ? 0 : 1);
-        int trackCount = сontainerCount/containerInTrack;
-        System.out.println(сontainerCount);
+        int trackCount = сontainerCount/containerInTrack + (сontainerCount % containerInTrack == 0 ? 0 : 1);
+        System.out.println("Контейнеров всего: " + сontainerCount);
+        System.out.println("Грузовиков всего: " + trackCount);
+        int cotainerNumber=0;
+
+        for (int i = 1; i <= trackCount; i++) {
+            System.out.println("Грузовик: " + i);
+            for (int j = 1; j <= containerInTrack; j++) {
+                cotainerNumber = cotainerNumber + 1;
+                if (cotainerNumber <= сontainerCount) {
+                    System.out.println("Контейнер: " + (cotainerNumber));
+                } else {
+                    return;
+                }
+            }
+        }
 
 
 
