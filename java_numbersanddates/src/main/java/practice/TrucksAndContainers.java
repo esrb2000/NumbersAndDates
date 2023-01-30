@@ -8,21 +8,27 @@ public class TrucksAndContainers {
         Scanner scanner = new Scanner(System.in);
 
         //получение количество коробок от пользователя
+        System.out.println("Введите колличество ящиков: ");
         int boxes = scanner.nextInt();
-// мой код
-        private int requiredContainer = 0;
-        private int requiredTrack = 0;
 
-        public int getRequiredContainer() {
-            requiredContainer = count/27;
-            return requiredContainer;
-        }
+        int boxesInContainer = 27;
+        int containerInTrack = 10;
 
-        public int getRequiredTruck() {
-            requiredTrack = requiredContainer/12;
-            return requiredTrack;
-        }
-// мой код
+        int сontainerCount = boxes/boxesInContainer + (boxes % boxesInContainer == 0 ? 0 : 1);
+        int trackCount = сontainerCount/containerInTrack;
+        System.out.println(сontainerCount);
+
+
+
+/*            for (int j = 1; j <= 10; j++) {
+                System.out.println("Контейнер: " + j);
+                for (int k = 1; k <= 27; k++) {
+                    System.out.println("Ящик: " + k);
+                }
+            }*/
+
+
+
         // TODO: вывести в консоль коробки разложенные по грузовикам и контейнерам
         // пример вывода при вводе 2
         // для отступа используйте табуляцию - \t
