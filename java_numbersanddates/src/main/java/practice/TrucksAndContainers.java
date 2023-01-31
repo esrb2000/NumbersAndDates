@@ -16,30 +16,26 @@ public class TrucksAndContainers {
 
         int сontainerCount = boxes/boxesInContainer + (boxes % boxesInContainer == 0 ? 0 : 1);
         int trackCount = сontainerCount/containerInTrack + (сontainerCount % containerInTrack == 0 ? 0 : 1);
-        System.out.println("Контейнеров всего: " + сontainerCount);
-        System.out.println("Грузовиков всего: " + trackCount);
-        int cotainerNumber=0;
+
+        int boxesNumber=0;
+
 
         for (int i = 1; i <= trackCount; i++) {
             System.out.println("Грузовик: " + i);
             for (int j = 1; j <= containerInTrack; j++) {
-                cotainerNumber = cotainerNumber + 1;
-                if (cotainerNumber <= сontainerCount) {
-                    System.out.println("Контейнер: " + (cotainerNumber));
-                } else {
-                    return;
+                System.out.println('\t' + "Контейнер: " + j);
+                for (int k = 1; k <= boxesInContainer; k++) {
+                    boxesNumber = boxesNumber + 1;
+                    if (boxesNumber <= boxes) {
+                        System.out.println("\t" + "\t" + "Ящик: " + (boxesNumber));
+                    } else {
+                        System.out.println("Необходимо контейнеров: " + сontainerCount);
+                        System.out.println("Необходимо грузовиков: " + trackCount);
+                        return;
+                    }
                 }
             }
         }
-
-
-
-/*            for (int j = 1; j <= 10; j++) {
-                System.out.println("Контейнер: " + j);
-                for (int k = 1; k <= 27; k++) {
-                    System.out.println("Ящик: " + k);
-                }
-            }*/
 
 
 
