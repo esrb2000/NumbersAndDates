@@ -1,24 +1,30 @@
 package practice;
 
+import java.time.LocalDate;
+
 public class Birthdays {
-
     public static void main(String[] args) {
-
         int day = 31;
         int month = 12;
         int year = 1990;
-
         System.out.println(collectBirthdays(year, month, day));
-
     }
-
     public static String collectBirthdays(int year, int month, int day) {
-
-
+        LocalDate today = LocalDate.now();
+        LocalDate birthday = LocalDate.of(year, month, day);
+        String collectionDate = "";
+        if (birthday.isAfter(today)) {
+            String error = "Введена некоректная дата";
+            return error;
+        } else {
+            for (LocalDate i = birthday.plusYears(0); i.isBefore(today); i = i.plusYears(1)) {
+                collectionDate = collectionDate + i + "\t" + i.getDayOfWeek() + System.lineSeparator();
+            }
+        }
+        return collectionDate;
         //TODO реализуйте метод для построения строки в следующем виде
         //0 - 31.12.1990 - Mon
         //1 - 31.12.1991 - Tue
-        
-        return "";
+        //return "";
     }
 }
