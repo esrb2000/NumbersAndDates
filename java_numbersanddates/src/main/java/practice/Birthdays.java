@@ -1,32 +1,31 @@
 package practice;
 
-import javax.xml.crypto.Data;
-import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
+import java.util.Locale;
 
 public class Birthdays {
     public static void main(String[] args) {
-        int day = 31;
-        int month = 12;
-        int year = 1990;
+        int day = 02;
+        int month = 02;
+        int year = 2023;
         System.out.println(collectBirthdays(year, month, day));
     }
     public static String collectBirthdays(int year, int month, int day) {
         int birthdayNumber = 0;
         String collectionDate = "";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy - E").localizedBy(new Locale("us"));
         LocalDate today = LocalDate.now();
         LocalDate birthday = LocalDate.of(year, month, day);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        //formatter.format(birthday);
+
 
         if (birthday.isAfter(today)) {
-            String error = "Введена некоректная дата";
+            String error = " ";
             return error;
         } else {
-            for (LocalDate i = birthday.plusYears(0); i.isBefore(today); i = i.plusYears(1)) {
-                collectionDate = collectionDate + birthdayNumber + " - " + i + " - " + i.getDayOfWeek() + System.lineSeparator();
+            for (LocalDate i = birthday.plusYears(0); (i.isBefore(today)) || (i.isEqual(today)); i = i.plusYears(1)) {
+                String formatBirthday = formatter.format(i);
+                collectionDate = collectionDate + birthdayNumber + " - " + formatBirthday + System.lineSeparator();
                 birthdayNumber = birthdayNumber + 1;
             }
         }
@@ -35,5 +34,6 @@ public class Birthdays {
         //0 - 31.12.1990 - Mon
         //1 - 31.12.1991 - Tue
         //return "";
+
     }
 }
